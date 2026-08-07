@@ -1,3 +1,5 @@
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import HardwareRow from "./HardwareRow";
 
 export type Project = {
@@ -40,23 +42,58 @@ function ProjectCard({
       <div className="hardware-section">
         <h3>Hardware Checkouts</h3>
 
-        <HardwareRow
-          setName="Hardware Set 1"
-          checkedOut={project.hardwareSet1}
-        />
+        <div className="hardware-control-row">
+          <HardwareRow
+            setName="Hardware Set 1"
+            checkedOut={project.hardwareSet1}
+          />
 
-        <HardwareRow
-          setName="Hardware Set 2"
-          checkedOut={project.hardwareSet2}
-        />
+          <TextField
+            label="Quantity"
+            type="number"
+            size="small"
+            slotProps={{
+              htmlInput: {
+                min: 1,
+              },
+            }}
+          />
+
+          <Button variant="contained">
+            Check Out
+          </Button>
+        </div>
+
+        <div className="hardware-control-row">
+          <HardwareRow
+            setName="Hardware Set 2"
+            checkedOut={project.hardwareSet2}
+          />
+
+          <TextField
+            label="Quantity"
+            type="number"
+            size="small"
+            slotProps={{
+              htmlInput: {
+                min: 1,
+              },
+            }}
+          />
+
+          <Button variant="outlined">
+            Check In
+          </Button>
+        </div>
       </div>
 
-      <button
-        className={project.joined ? "leave-button" : "join-button"}
+      <Button
+        variant="contained"
+        color={project.joined ? "error" : "primary"}
         onClick={() => onToggleMembership(project.id)}
       >
         {project.joined ? "Leave Project" : "Join Project"}
-      </button>
+      </Button>
     </article>
   );
 }

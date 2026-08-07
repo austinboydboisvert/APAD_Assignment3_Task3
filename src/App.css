@@ -147,3 +147,32 @@ button {
     gap: 4px;
   }
 }
+
+.hardware-control-row {
+  display: grid;
+  grid-template-columns: 1fr 140px 120px;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.hardware-control-row .hardware-row {
+  border-bottom: none;
+  padding: 0;
+}
+
+.project-card > button {
+  display: block;
+  margin-left: auto;
+  margin-top: 20px;
+}
+
+@media (max-width: 750px) {
+  .hardware-control-row {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card > button {
+    width: 100%;
+  }
+}
